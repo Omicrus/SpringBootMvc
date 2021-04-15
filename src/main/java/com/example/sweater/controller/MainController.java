@@ -88,11 +88,12 @@ public class MainController {
 
     //удаляем 1 сообшение из БД и возвращяем обновлёный список сообшений
     @GetMapping(value = "/main", params = "messageId")
-    public String delete(@RequestParam(value = "messageId", required = false) long id,
+    public String delete(@RequestParam(value = "messageId", required = false) int id,
                          @AuthenticationPrincipal User user,
                          Model model) {
 
         messageRepo.deleteById(id);
+
         Iterable<Message> messages = messageRepo.findAll();
         model.addAttribute("isAdmin", user.getRoles().contains(Role.ADMIN));
         model.addAttribute("user", user);
