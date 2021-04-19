@@ -1,13 +1,14 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-<div>Hello,
-    <#if isLogged>
-        ${user.username}
-    <#else>
-        guest
-    </#if>
-</div>
+    <h5>Hello,
+        <#if isLogged>
+            ${user.username}
+        <#else>
+            guest
+        </#if>
+    </h5>
+    <div>This is a simple clone of Twitter</div>
 
-<a href="/main">Main Page</a>
+
 </@c.page>
