@@ -24,7 +24,8 @@
                 </div>
                 <div class="form-group">
                     <div class="custom-file">
-                        <input type="file" name="file" id="customFile">
+                        <input type="file" name="file" id="customFile" class="custom-file-input"
+                               aria-describedby="myInput">
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
                 </div>
@@ -35,6 +36,7 @@
             </form>
         </div>
     </div>
+
     <div class="card-columns">
         <#list messages as message>
 
@@ -76,4 +78,5 @@
             No message
         </#list>
     </div>
+
 </@c.page>

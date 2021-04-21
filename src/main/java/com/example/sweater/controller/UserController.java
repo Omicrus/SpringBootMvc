@@ -30,7 +30,6 @@ public class UserController {
     @GetMapping("{user}")
     public String userEditForm(@PathVariable User user, Model model) {
         model.addAttribute("user", user);
-        model.addAttribute("password", user.getPassword());
         model.addAttribute("roles", Role.values());
         return "userEdit";
     }
@@ -42,21 +41,20 @@ public class UserController {
             @RequestParam("userId") User user) {
 
         user.setUsername(username);
+
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
                 .collect(Collectors.toSet());
 
         user.getRoles().clear();
 
-        if (!form.isEmpty()) {
             for (String key : form.keySet()) {
                 if (roles.contains(key)){
                     user.getRoles().add(Role.valueOf(key));
                 }
             }
-        }
-
         userRepo.save(user);
+
         return "redirect:/user";
     }
 }
